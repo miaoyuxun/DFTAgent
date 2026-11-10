@@ -1,0 +1,12 @@
+.git
+.venv
+__pycache__
+.pytest_cache
+results
+run
+benchmark/GMTKN55
+config/llm.yaml
+.env
+*.log
+*.chk
+*.h5

@@ -1,0 +1,18 @@
+{
+  "task_name": "benchmark_mean_mae",
+  "valid": true,
+  "reward": -2.0,
+  "objective": {
+    "subsets": {
+      "ALKBDE10": {"mae_kcal": 1.0, "n_failures": 0},
+      "DIPCS10": {"mae_kcal": 2.0, "n_failures": 0},
+      "G2RC": {"mae_kcal": 3.0, "n_failures": 0}
+    },
+    "mean_mae_kcal": 2.0,
+    "reward_definition": "illustrative only; replace with an evaluated root",
+    "equal_subset_weighting": true
+  },
+  "proposal_feedback": {},
+  "failure_reason": "",
+  "walltime_s": 0.0
+}

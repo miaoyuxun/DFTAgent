@@ -1,0 +1,51 @@
+output_dir: results/mean_mae_basin
+core_output_dir: results/mean_mae_basin_core
+llm_config: config/llm.yaml
+log_level: INFO
+
+search:
+  cycles: 1
+  proposals_per_cycle: 16
+  proposal_batch_size: 4
+  max_proposal_batches: 8
+  proposal_evaluation_concurrency: 4
+  parent_pool_size: 12
+  parent_pool_max_per_seed: 4
+  novelty_threshold: 0.10
+  component_pool: expanded
+  update_functional_graph: false
+  enable_local_ea: true
+  ea_seed_count: 2
+  ea_population_size: 4
+  ea_generations: 2
+  ea_elite_size: 2
+  allow_hf_exchange_rewire: true
+  allow_ext_param_rewire: false
+  use_benchmark_component_priors: false
+  use_component_design_priors: false
+  seed: 42
+
+task:
+  component_pool: expanded
+  root_functional: PBE0
+  subsets: [ALKBDE10, DIPCS10, G2RC]
+  max_failures_per_subset: 0
+  allow_hf_exchange: true
+  allow_ext_param_rewire: false
+
+evaluation:
+  backend: vc
+  vc_prefix: $DFTAGENT_VC_PREFIX
+  container_repo_root: /workspace/DFTAgent
+  cpus_per_candidate: 4
+  max_concurrent: 4
+
+benchmark_evaluation:
+  gmtkn55_dir: benchmark/GMTKN55
+  basis: def2-TZVP
+  scf_max_cycle: 200
+  scf_conv_tol: 1.0e-8
+  aggregate_mode: reaction_mean
+  n_workers: 4
+  n_threads: 1
+  molecules_per_task: 1
